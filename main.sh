@@ -9,17 +9,8 @@ cp $bin/models/nrff/"$dataset"/rgb/"$img_nb".png image1.png
 
 cp $bin/models/gt/"$dataset"/rgb/"$img_nb4".png image2.png
 
-# Get the original dimensions
-width=$(identify -format "%w" image0.png)
-height=$(identify -format "%h" image0.png)
-
-# Downscale the image to exact dimensions
-convert image2.png -resize "${width}x${height}" image2.png
-
-
 cp $bin/models/refnerf/"$dataset"/normals/"$img_nb".png normals_refnerf.png
 cp $bin/models/nrff/"$dataset"/normals/"$img_nb".png normals_nrff.png
-
 
 python $bin/metrics.py image2.png image0.png ./metrics_refnerf
 

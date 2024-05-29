@@ -6,7 +6,7 @@ from piqa.lpips import LPIPS
 import torch
 from torchvision import transforms as T
 import skimage.transform as st
-
+from torchvision.transforms import ToPILImage
 
 def resize(img_read, shape):
     """
@@ -100,6 +100,17 @@ def save_float_value(file_path, value):
     with open(file_path, 'w') as file:
         file.write(str(value))
 
+def save_tensor_as_image(tensor, output_path):
+    # Ensure the tensor is in the range [0, 1]
+    tensor = torch.clamp(tensor, 0, 1)
+    
+    # Convert the tensor to a PIL Image
+    to_pil = ToPILImage()
+    image = to_pil(tensor)
+    
+    # Save the PIL image
+    image.save(output_path)
+    print(f"Image saved to {output_path}")
 
 if __name__ == "__main__":
 
@@ -128,7 +139,7 @@ if __name__ == "__main__":
 
     image1_resized = tensor_transform(image1_resized) 
 
-    #save_tensor_as_image(image1_resized, "./bbbbb.png")
+    save_tensor_as_image(image1_resized, "./image2.png")
 
     mse = img2mse(image1_resized, image2)
     psnr_data =  f"PSNR ⇧: {mse2psnr(mse).item():.4f} \n"
