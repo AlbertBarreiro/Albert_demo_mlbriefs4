@@ -119,6 +119,8 @@ if __name__ == "__main__":
 
 
     image1_resized = resize(image1, image2.shape[1:])
+    print("image1_resized", image1_resized.shape)
+    print("image2", image2.shape)
 
     if image1_resized.shape[2] == 4:
         alpha = image1_resized[..., -1:]
