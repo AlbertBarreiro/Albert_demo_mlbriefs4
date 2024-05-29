@@ -129,9 +129,9 @@ if __name__ == "__main__":
     #save_tensor_as_image(image1_resized, "./bbbbb.png")
 
     mse = img2mse(image1_resized, image2)
-    psnr_data =  "PSNR: "   + str(mse2psnr(mse).item()) + "\n"
-    ssim_data =  "SSIM: "   + str(ssim(image1_resized, image2).item()) + "\n"
-    lpips_data = "LPIPS: "  + str(lpips(image1_resized, image2).item())
+    psnr_data =  f"PSNR ⇧: {mse2psnr(mse).item():.4f} \n"
+    ssim_data =  f"SSIM ⇧: {ssim(image1_resized, image2).item():.4f} \n"
+    lpips_data = f"LPIPS ⇩: {lpips(image1_resized, image2).item():.4f} "
 
     save_float_value(output_path, psnr_data +ssim_data + lpips_data )
     
