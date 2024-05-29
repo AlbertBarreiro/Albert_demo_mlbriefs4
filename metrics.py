@@ -1,6 +1,6 @@
 import numpy as np
 import sys
-import imageio
+import imageio.v2 as imageio
 from piqa.ssim import SSIM
 from piqa.lpips import LPIPS
 import torch
