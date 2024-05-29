@@ -1,2 +1,9 @@
-numpy==1.26.4
+numpy==1.24.4
 iio==0.0.3
+python==3.8.12
+pytorch==1.11.0
+imageio==2.21.2
+piqa==1.2.2
+pytorch==1.11.0
+torchvision==0.12.0
+scikit-image==0.19.3
