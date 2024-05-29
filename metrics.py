@@ -130,14 +130,19 @@ if __name__ == "__main__":
 
 
     image1_resized = resize(image1, image2.shape[1:])
-    print("image1_resized", image1_resized.shape)
-    print("image2", image2.shape)
+
 
     if image1_resized.shape[2] == 4:
         alpha = image1_resized[..., -1:]
         image1_resized = image1_resized[..., :3] * alpha + (1.0 - alpha)
 
+  
+
     image1_resized = tensor_transform(image1_resized) 
+
+
+    print("image1_resized", image1_resized.shape)
+    print("image2", image2.shape)
 
     save_tensor_as_image(image1_resized, "./image2.png")
 
