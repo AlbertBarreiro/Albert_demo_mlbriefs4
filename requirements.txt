@@ -1,2 +1,5 @@
 numpy==1.24.4
 iio==0.0.3
+imageio==2.21.2
+piqa==1.2.2
+scikit-image==0.19.3
