@@ -111,10 +111,6 @@ if __name__ == "__main__":
     image2_path = sys.argv[2]
     output_path = sys.argv[3]
 
-    output_path_psnr =  output_path + "_psnr"
-    output_path_ssim = output_path + "_ssim"
-    output_path_lpips = output_path + "_lpips"
-
     image1 = imageio.imread(image1_path)
     image1 = (image1 / 255.0).astype(np.float32)
 
@@ -133,10 +129,11 @@ if __name__ == "__main__":
     #save_tensor_as_image(image1_resized, "./bbbbb.png")
 
     mse = img2mse(image1_resized, image2)
-    save_float_value(output_path_psnr, mse2psnr(mse).item())
-    
-    save_float_value(output_path_ssim, ssim(image1_resized, image2).item())
+    psnr_data =  "PSNR: "   + str(mse2psnr(mse).item()) + "\n"
+    ssim_data =  "SSIM: "   + str(ssim(image1_resized, image2).item()) + "\n"
+    lpips_data = "LPIPS: "  + str(lpips(image1_resized, image2).item())
 
-    save_float_value(output_path_lpips, lpips(image1_resized, image2).item())
+    save_float_value(output_path, psnr_data +ssim_data + lpips_data )
     
+
 
