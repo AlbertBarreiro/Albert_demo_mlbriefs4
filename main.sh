@@ -9,6 +9,6 @@ cp $bin/models/nrff/"$dataset"/rgb/"$img_nb".png image1.png
 cp $bin/models/gt/"$dataset"/rgb/"$img_nb4".png image2.png
 
 
-python $bin/metrics.py image0.png image2.png ./metrics_refnerf
+python $bin/metrics.py image2.png image0.png ./metrics_refnerf
 
-python $bin/metrics.py image1.png image2.png ./metrics_nrff
+python $bin/metrics.py image2.png image1.png ./metrics_nrff
