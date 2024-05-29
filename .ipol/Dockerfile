@@ -1,5 +1,5 @@
 # use one of the images from this repository: https://github.com/centreborelli/ipol-docker-images/
-FROM registry.ipol.im/ipol:v1-py3.8
+FROM registry.ipol.im/ipol:v1-py3.9-pytorch
 
 # install additional debian packages
 COPY .ipol/packages.txt packages.txt
