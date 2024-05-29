@@ -1,3 +1,4 @@
+dataset=$(cat $input_0)
 img=$2
  
 img_nb=$(printf "%03d" "$img")
