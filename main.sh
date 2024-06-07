@@ -1,10 +1,13 @@
 dataset=$(cat $input_0)
+
+if $dataset != "toaster" and  $dataset != "ani" and $dataset != "ball"; then
+    echo "Choose between the three different availabe datasets."
+    exit 1
+
 img=$1
 
 img_nb=$(printf "%03d" "$img")
 img_nb4=$(printf "%04d" "$img")
-
-echo /models/refnerf/"$dataset"/rgb/"$img_nb"
 
 cp $bin/models/refnerf/"$dataset"/rgb/"$img_nb".png image0.png
 cp $bin/models/nrff/"$dataset"/rgb/"$img_nb".png image1.png
