@@ -1,11 +1,16 @@
 dataset=$(cat $input_0)
 img=$2
- 
+
 img_nb=$(printf "%03d" "$img")
 img_nb4=$(printf "%04d" "$img")
- 
-cp $bin/models/refnerf/"$dataset"/rgb/"$img_nb".png image0.png
-cp $bin/models/nrff/"$dataset"/rgb/"$img_nb".png image1.png
+
+
+
+refnerf_hash=$(head -c 32 /dev/urandom | sha256sum | awk '{print $1}')
+nrff_hash=$(head -c 32 /dev/urandom | sha256sum | awk '{print $1}')
+
+cp $bin/models/refnerf/"$dataset"/rgb/"$img_nb".png "$refnerf_hash".png
+cp $bin/models/nrff/"$dataset"/rgb/"$img_nb".png "$nrff_hash".png
 
 cp $bin/models/gt/"$dataset"/rgb/"$img_nb4".png image2.png
 convert image2.png -resize 50% image2.png
