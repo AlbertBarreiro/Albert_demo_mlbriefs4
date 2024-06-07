@@ -1,5 +1,5 @@
 dataset=$(cat $input_0)
-img=$2
+img=$1
 
 img_nb=$(printf "%03d" "$img")
 img_nb4=$(printf "%04d" "$img")
