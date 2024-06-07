@@ -1,10 +1,12 @@
 dataset=$(cat $input_0)
+img=$1
 
-if $dataset != "toaster" and  $dataset != "ani" and $dataset != "ball"; then
+
+if [[ "$dataset" != "toaster" && "$dataset" != "ani" && "$dataset" != "ball" ]]; then
     echo "Choose between the three different availabe datasets."
     exit 1
+fi
 
-img=$1
 
 img_nb=$(printf "%03d" "$img")
 img_nb4=$(printf "%04d" "$img")
