@@ -3,7 +3,7 @@ import numpy as np
 import shutil
 import os
 
-def find_demo_images(transforms_path, dataset_id, input_azimuth):
+def find_demo_images(transforms_path, dataset_id, input_azimuth, bin_path):
 
     with open(transforms_path, "r") as f:
         data = json.load(f)
@@ -32,12 +32,12 @@ def find_demo_images(transforms_path, dataset_id, input_azimuth):
     format_filename4 = lambda p : f"{int(os.path.basename(p).split('_')[-1]):04d}.png"
     format_filename3 = lambda p : f"{int(os.path.basename(p).split('_')[-1]):03d}.png"
 
-    gt_rgb = [f"models/gt/{dataset_id}/rgb/{format_filename4(p)}" for p in output_paths]
-    nrff_rgb = [f"models/nrff/{dataset_id}/rgb/{format_filename3(p)}" for p in output_paths]
-    refnerf_rgb = [f"models/refnerf/{dataset_id}/rgb/{format_filename3(p)}" for p in output_paths]
+    gt_rgb = [f"{bin_path}/models/gt/{dataset_id}/rgb/{format_filename4(p)}" for p in output_paths]
+    nrff_rgb = [f"{bin_path}/models/nrff/{dataset_id}/rgb/{format_filename3(p)}" for p in output_paths]
+    refnerf_rgb = [f"{bin_path}/models/refnerf/{dataset_id}/rgb/{format_filename3(p)}" for p in output_paths]
 
-    nrff_normals= [f"models/nrff/{dataset_id}/rgb/{format_filename3(p)}" for p in output_paths]
-    refnerf_normals = [f"models/refnerf/{dataset_id}/rgb/{format_filename3(p)}" for p in output_paths]
+    nrff_normals= [f"{bin_path}/models/nrff/{dataset_id}/rgb/{format_filename3(p)}" for p in output_paths]
+    refnerf_normals = [f"{bin_path}/models/refnerf/{dataset_id}/rgb/{format_filename3(p)}" for p in output_paths]
 
 
     # WRITE RGB IMAGES

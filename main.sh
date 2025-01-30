@@ -8,20 +8,17 @@ if [[ "$dataset" != "toaster" && "$dataset" != "ani" && "$dataset" != "ball" ]];
 fi
 
 
-cp $bin/models/refnerf/"$dataset"/rgb/"$img_nb".png image0.png
-cp $bin/models/nrff/"$dataset"/rgb/"$img_nb".png image1.png
-
-cp $bin/models/gt/"$dataset"/rgb/"$img_nb4".png image2.png
-convert image2.png -resize 50% image2.png
-
-cp $bin/models/refnerf/"$dataset"/normals/"$img_nb".png normals_refnerf.png
-cp $bin/models/nrff/"$dataset"/normals/"$img_nb".png normals_nrff.png
 
 
-python $bin/metrics.py image2.png image0.png ./metrics_refnerf
+python  $bin/find_demo_images.py $bin/models/refnerf/"$dataset"/transforms_demo_ipol.json $az $bin
 
-python $bin/metrics.py image2.png image1.png ./metrics_nrff
+gt_rgb=demo_output/gt_rgb/c_view.png
+refnerf_rgb=demo_output/refnerf_rgb/c_view.png
+nrff_rgb=demo_output/nrff_rgb/c_view.png
+convert $gt_rgb -resize 50% $gt_rgb
 
-python  $bin/find_demo_images.py $bin/models/refnerf/"$dataset"/transforms_demo_ipol.json $az
+python $bin/metrics.py $gt_rgb $refnerf_rgb ./metrics_refnerf
+python $bin/metrics.py $gt_rgb $nrff_rgb ./metrics_nrff
+
 
 echo "Correct execution"
