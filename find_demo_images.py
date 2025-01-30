@@ -3,6 +3,15 @@ import numpy as np
 import shutil
 import os
 import sys
+import imageio
+
+def merge_output_views(demo_output):
+    for subdir in os.listdir(demo_output):
+        subdir_path = os.path.join(demo_output, subdir)
+        if os.path.isdir(subdir_path):
+            images = [imageio.imread(os.path.join(subdir_path, img)) for img in ["l_view.png", "c_view.png", "r_view.png"]]
+            combined = np.hstack(images)
+            imageio.imwrite(os.path.join(subdir_path, "merged_image.png"), combined)
 
 def find_demo_images(transforms_path, dataset_id, input_azimuth, bin_path):
 
@@ -79,4 +88,5 @@ if __name__ == "__main__":
     bin_path = sys.argv[4]
 
     find_demo_images(transforms_path, dataset_id, azimuth, bin_path)
+    merge_output_views("demo_output")
     print("Images correctly found")
