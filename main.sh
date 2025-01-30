@@ -10,7 +10,7 @@ fi
 
 
 
-python  $bin/find_demo_images.py $bin/models/refnerf/"$dataset"/transforms_demo_ipol.json $dataset $az $bin
+python  $bin/find_demo_images.py $bin/models/gt/"$dataset"/transforms_demo_ipol.json $dataset $az $bin
 
 
 gt_rgb=demo_output/gt_rgb/c_view.png
