@@ -11,6 +11,7 @@ fi
 
 
 python  $bin/find_demo_images.py $bin/models/refnerf/"$dataset"/transforms_demo_ipol.json $az $bin
+ls demo_output
 
 gt_rgb=demo_output/gt_rgb/c_view.png
 refnerf_rgb=demo_output/refnerf_rgb/c_view.png
