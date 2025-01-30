@@ -60,6 +60,10 @@ def find_demo_images(transforms_path, dataset_id, input_azimuth, bin_path):
     for source_path, target_path in zip(nrff_normals, ["l_view.png", "c_view.png", "r_view.png"]):
         shutil.copyfile(source_path, "demo_output/nrff_normals/" + target_path)
 
+    assert os.path.exists("demo_output/gt_rgb/c_view.png")
+
+
+
 if __name__ == "__main__":
 
     if len(sys.argv) != 5:
