@@ -66,6 +66,7 @@ def find_demo_images(transforms_path, dataset_id, input_azimuth, bin_path):
         shutil.copyfile(source_path, "demo_output/nrff_normals/" + target_path)
 
     assert os.path.exists("demo_output/gt_rgb/c_view.png")
+    print("Rendered images are ready")
 
 
 
