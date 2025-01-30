@@ -6,6 +6,11 @@ import sys
 
 def find_demo_images(transforms_path, dataset_id, input_azimuth, bin_path):
 
+    assert os.path.exists(transforms_path)
+    print(f"transforms.json path = {transforms_path}")
+    print(f"dataset_id = {dataset_id}")
+    print(f"input_azimuth = {input_azimuth}")
+
     with open(transforms_path, "r") as f:
         data = json.load(f)
 
@@ -75,3 +80,4 @@ if __name__ == "__main__":
     azimuth = sys.argv[3]
     bin_path = sys.argv[4]
     find_demo_images(transforms_path, dataset_id, azimuth, bin_path)
+    print("Images correctly found")
