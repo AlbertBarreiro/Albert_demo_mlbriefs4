@@ -79,5 +79,6 @@ if __name__ == "__main__":
     dataset_id = sys.argv[2]
     azimuth = sys.argv[3]
     bin_path = sys.argv[4]
+    print("find demo images run")
     find_demo_images(transforms_path, dataset_id, azimuth, bin_path)
     print("Images correctly found")
