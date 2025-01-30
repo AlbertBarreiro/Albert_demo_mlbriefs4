@@ -1,5 +1,5 @@
 dataset=$(cat $input_0)
-img=$1
+az=$1
 
 
 if [[ "$dataset" != "toaster" && "$dataset" != "ani" && "$dataset" != "ball" ]]; then
@@ -7,9 +7,6 @@ if [[ "$dataset" != "toaster" && "$dataset" != "ani" && "$dataset" != "ball" ]];
     exit 1
 fi
 
-
-img_nb=$(printf "%03d" "$img")
-img_nb4=$(printf "%04d" "$img")
 
 cp $bin/models/refnerf/"$dataset"/rgb/"$img_nb".png image0.png
 cp $bin/models/nrff/"$dataset"/rgb/"$img_nb".png image1.png
@@ -24,5 +21,7 @@ cp $bin/models/nrff/"$dataset"/normals/"$img_nb".png normals_nrff.png
 python $bin/metrics.py image2.png image0.png ./metrics_refnerf
 
 python $bin/metrics.py image2.png image1.png ./metrics_nrff
+
+python  $bin/find_demo_images.py $bin/models/refnerf/"$dataset"/transforms_demo_ipol.json $az
 
 echo "Correct execution"
