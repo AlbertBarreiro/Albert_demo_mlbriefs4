@@ -18,13 +18,11 @@ def find_demo_images(transforms_path, dataset_id, input_azimuth, bin_path):
     target_image_idx = all_azimuths.index(str(input_azimuth))
     all_azimuths = [float(x) for x in all_azimuths]
     target_image_path = data["frames"][target_image_idx]["file_path"]
-    print(input_azimuth)
 
     dist_to_other_azimuths = np.array(all_azimuths) - float(input_azimuth)
     neighbor_idx_1, neighbor_idx_2 = np.argsort(abs(dist_to_other_azimuths))[1:3]
     dist_to_neighbor1 = dist_to_other_azimuths[neighbor_idx_1]
     dist_to_neighbor2 = dist_to_other_azimuths[neighbor_idx_2]
-    print(dist_to_neighbor1, dist_to_neighbor2)
 
     neighbor_path_1 = data["frames"][neighbor_idx_1]["file_path"]
     neighbor_path_2 = data["frames"][neighbor_idx_2]["file_path"]
@@ -42,8 +40,8 @@ def find_demo_images(transforms_path, dataset_id, input_azimuth, bin_path):
     nrff_rgb = [f"{bin_path}/models/nrff/{dataset_id}/rgb/{format_filename3(p)}" for p in output_paths]
     refnerf_rgb = [f"{bin_path}/models/refnerf/{dataset_id}/rgb/{format_filename3(p)}" for p in output_paths]
 
-    nrff_normals= [f"{bin_path}/models/nrff/{dataset_id}/rgb/{format_filename3(p)}" for p in output_paths]
-    refnerf_normals = [f"{bin_path}/models/refnerf/{dataset_id}/rgb/{format_filename3(p)}" for p in output_paths]
+    nrff_normals= [f"{bin_path}/models/nrff/{dataset_id}/normals/{format_filename3(p)}" for p in output_paths]
+    refnerf_normals = [f"{bin_path}/models/refnerf/{dataset_id}/normals/{format_filename3(p)}" for p in output_paths]
 
 
     # WRITE RGB IMAGES
