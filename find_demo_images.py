@@ -20,7 +20,7 @@ def find_demo_images(transforms_path, dataset_id, input_azimuth, bin_path):
     target_image_path = data["frames"][target_image_idx]["file_path"]
     print(input_azimuth)
 
-    dist_to_other_azimuths = np.array(all_azimuths) - input_azimuth
+    dist_to_other_azimuths = np.array(all_azimuths) - float(input_azimuth)
     neighbor_idx_1, neighbor_idx_2 = np.argsort(abs(dist_to_other_azimuths))[1:3]
     dist_to_neighbor1 = dist_to_other_azimuths[neighbor_idx_1]
     dist_to_neighbor2 = dist_to_other_azimuths[neighbor_idx_2]
