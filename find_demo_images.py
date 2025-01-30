@@ -2,6 +2,7 @@ import json
 import numpy as np
 import shutil
 import os
+import sys
 
 def find_demo_images(transforms_path, dataset_id, input_azimuth, bin_path):
 
@@ -59,4 +60,14 @@ def find_demo_images(transforms_path, dataset_id, input_azimuth, bin_path):
     for source_path, target_path in zip(nrff_normals, ["l_view.png", "c_view.png", "r_view.png"]):
         shutil.copyfile(source_path, "demo_output/nrff_normals/" + target_path)
 
-find_demo_images("/home/Imatge/projects/AI4Heritage/albert/ipol/Albert_demo_mlbriefs4/models/gt/toaster/transforms_demo_ipol.json", "toaster", 10)
+if __name__ == "__main__":
+
+    if len(sys.argv) != 5:
+        print("Usage: python find_demo_images.py <transforms_path> <dataset_id> <azimuth> <bin_path>")
+        sys.exit(1)
+
+    transforms_path = sys.argv[1]
+    dataset_id = sys.argv[2]
+    azimuth = sys.argv[3]
+    bin_path = sys.argv[4]
+    find_demo_images(transforms_path, dataset_id, azimuth, bin_path)
