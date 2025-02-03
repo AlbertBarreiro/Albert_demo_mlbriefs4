@@ -6,6 +6,9 @@ Ref-NeRF and NRFF* (2025), published in the [MLBriefs 2024](https://mlbriefs.com
 
 This demo compares two models for specular reflections: **Ref-NeRF** [1] and **NRFF** [2]. The comparison is performed across multiple views in RGB, normal maps, and three evaluation metrics (PSNR, SSIM, and LPIPS). 
 
+You can try the demo here: [DEMO](https://ipolcore.ipol.im/demo/clientApp/demo.html?id=77777000506)
+
+
 For this evaluation, two objects were selected from the [*Shiny Blender* dataset](https://storage.googleapis.com/gresearch/refraw360/ref.zip), and an additional object was specifically designed, which can be found [here](https://zenodo.org/records/12568381).
 
 
